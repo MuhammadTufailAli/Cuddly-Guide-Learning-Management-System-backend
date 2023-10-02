@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "client": "cd context-api && npm start",
-    "dev": "concurrently \"nodemon app.js\" \"npm run client\"",
+    "dev": "nodemon server.js",
     "debug": "ndb server.js"
   },
   "dependencies": {
