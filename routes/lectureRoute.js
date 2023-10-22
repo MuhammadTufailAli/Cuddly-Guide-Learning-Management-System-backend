@@ -15,4 +15,6 @@ router
   .route("/getLecturesByCategory")
   .post(lectureController.getLecturesByCategory);
 
+router.route("/deleteLecture/:id").delete(lectureController.deleteLecture);
+
 module.exports = router;

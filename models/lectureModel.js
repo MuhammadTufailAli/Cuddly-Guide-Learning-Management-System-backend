@@ -24,6 +24,11 @@ const lectureSchema = new mongoose.Schema({
 
     trim: true,
   },
+  lectureLink: {
+    type: String,
+
+    trim: true,
+  },
   lecturePdfLocation: {
     type: String,
 

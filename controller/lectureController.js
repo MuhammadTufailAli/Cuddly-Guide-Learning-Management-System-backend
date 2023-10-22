@@ -5,6 +5,8 @@ const fs = require("fs");
 const path = require("path");
 // exports.addLecture = factory.createOne(lecture);
 
+exports.deleteLecture = factory.deleteOne(lecture);
+
 // Set up Multer for file storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -20,19 +22,29 @@ const upload = multer({ storage });
 exports.addLecture = upload.single("pdfFile");
 
 exports.createLecture = async (req, res, next) => {
-  const { lectureName, lectureDescription, refOfUser, category, MentorName } =
-    req.body;
+  const {
+    lectureName,
+    lectureLink,
+    lectureDescription,
+    refOfUser,
+    category,
+    MentorName,
+  } = req.body;
 
   try {
     const newLecture = new lecture({
       lectureName,
+      lectureLink,
       lectureDescription,
       refOfUser,
       category,
       MentorName,
       lecturePdfLocation: req.file.path, // The path where the file is stored
     });
+    console.log(newLecture);
     const doc = await newLecture.save();
+
+    console.log(doc);
     res.status(201).json({
       status: "success",
 

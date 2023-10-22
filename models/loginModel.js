@@ -40,6 +40,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "User must have Email"],
     },
+    photo: {
+      type: String,
+      required: [true, "User must have Photo"],
+    },
 
     passwordResetToken: String,
     passwordResetExpires: Date,

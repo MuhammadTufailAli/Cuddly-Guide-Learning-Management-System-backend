@@ -7,6 +7,8 @@ const catchAsync = require("./../utils/catchAsync");
 const sendEmail = require("./../utils/email");
 const crypto = require("crypto");
 const multer = require("multer");
+const fs = require("fs");
+const path = require("path");
 const sharp = require("sharp");
 
 const factory = require("./handlerFactory");
@@ -123,6 +125,7 @@ const filterObj = (obj, ...allowedFields) => {
 
 //Add user to DB
 exports.addUser = async (req, res, next) => {
+  console.log(req.body);
   try {
     const newUser = await User.create({
       name: req.body.name,
@@ -131,6 +134,7 @@ exports.addUser = async (req, res, next) => {
       password: req.body.password,
 
       role: req.body.role,
+      photo: req.body.photo,
     });
 
     res.status(200).json({
